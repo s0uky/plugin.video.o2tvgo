@@ -2,6 +2,7 @@
 <settings>
     <setting label="30001" type="text" id="username" default=""/>
     <setting label="30002" type="text" id="password" option="hidden" enable="!eq(-1,)" default=""/>
+    <setting label="30008" id="quality" type="enum" lvalues="30009|30010" sort="no" default="30009"/>
     <setting id="send_errors" type="bool" label="30025" default="false" />
     <setting label="30005" id="device_id" type="text" enable="false" />
 </settings>

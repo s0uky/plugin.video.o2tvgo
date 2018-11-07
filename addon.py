@@ -57,10 +57,7 @@ try:
         if first_device_id == second_device_id:
             _device_id_ = first_device_id
         else:
-            if _device_name_:
-                _device_id_ = _fromDeviceId()
-            else:
-                _device_id_ = _randomHex16()
+            _device_id_ = _randomHex16()
         _addon_.setSetting("device_id", _device_id_)
 
     ###############################################################################
@@ -72,12 +69,16 @@ try:
     _version_ = _addon_.getAddonInfo('version')
     _username_ = _addon_.getSetting("username")
     _password_ = _addon_.getSetting("password")
+    if _addon_.getSetting("quality") == "0":
+        _quality_ = "STB"
+    else:
+        _quality_ = "TABLET"
     _format_ = 'video/' + _addon_.getSetting('format').lower()
     _icon_ = xbmc.translatePath( os.path.join(_addon_.getAddonInfo('path'), 'icon.png' ) )
     _handle_ = int(sys.argv[1])
     _baseurl_ = sys.argv[0]
 
-    _o2tvgo_ = O2TVGO(_device_id_, _username_, _password_)
+    _o2tvgo_ = O2TVGO(_device_id_, _username_, _password_, _quality_)
     ###############################################################################
     def log(msg, level=xbmc.LOGDEBUG):
         if type(msg).__name__=='unicode':
@@ -146,8 +147,13 @@ try:
         _username_ = _addon_.getSetting("username")
         global _password_
         _password_ = _addon_.getSetting("password")
+        global _quality_
+        if _addon_.getSetting("quality") == "0":
+            _quality_ = "STB"
+        else:
+            _quality_ = "TABLET"
         global _o2tvgo_
-        _o2tvgo_ = O2TVGO(_device_id_, _username_, _password_)
+        _o2tvgo_ = O2TVGO(_device_id_, _username_, _password_, _quality_)
 
     def channelListing():
         channels = _fetchChannels()
