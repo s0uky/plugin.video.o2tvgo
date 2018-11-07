@@ -1,3 +1,6 @@
+2018-11-07 [1.1.9 PE]
+* Fix login
+* Added quality selection setting 
 2017-11-26 [1.1.8]
 * New icon
 2017-02-02 [1.1.7]
