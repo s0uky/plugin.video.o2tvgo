@@ -116,7 +116,6 @@ try:
         link = None
         ex = False
         while not link:
-            _o2tvgo_.access_token = _addon_.getSetting('access_token')
             channels = _fetchChannels()
             if not channels:
                 return
