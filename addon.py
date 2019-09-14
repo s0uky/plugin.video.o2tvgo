@@ -15,6 +15,7 @@ from o2tvgo import O2TVGO
 from o2tvgo import AuthenticationError
 from o2tvgo import TooManyDevicesError
 from o2tvgo import ChannelIsNotBroadcastingError
+from o2tvgo import NoPlaylistUrlsError
 
 params = False
 try:
@@ -133,6 +134,10 @@ try:
             except ChannelIsNotBroadcastingError:
                 d = xbmcgui.Dialog()
                 d.notification(_scriptname_, _lang_(30007), xbmcgui.NOTIFICATION_INFO)
+                return
+            except NoPlaylistUrlsError:
+                d = xbmcgui.Dialog()
+                d.notification(_scriptname_, _lang_(30011), xbmcgui.NOTIFICATION_ERROR)
                 return
         return link, channel
 
